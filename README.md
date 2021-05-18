@@ -23,11 +23,23 @@ The [`libnetty-http`](libnetty-http) module provides additional utility function
 
 ### libnetty-http-client
 
-The [`libnetty-http-client`](libnetty-http-client) module provides a simplified HTTP client, supports both synchronous and asynchronous(based on JDK8+ CompletableFuture) APIs.
+The [`libnetty-http-client`](libnetty-http-client) module provides a simplified, noblocking HTTP client, supports both synchronous and asynchronous(based on JDK8+ CompletableFuture) APIs.
 
 ### libnetty-http-server
 
-The [`libnetty-http-server`](libnetty-http-server) module provides a simplified HTTP server framework.
+The [`libnetty-http-server`](libnetty-http-server) module provides a simplified, noblocking HTTP server framework.
+
+### libnetty-http2-client
+
+> Under development !!!
+
+The [`libnetty-http2-client`](libnetty-http2-client) module provides a simplified, noblocking HTTP 2 client, supports both synchronous and asynchronous(based on JDK8+ CompletableFuture) APIs.
+
+### libnetty-http2-server
+
+> Under development !!!
+
+The [`libnetty-http2-server`](libnetty-http2-server) module provides a simplified, noblocking HTTP 2 server framework.
 
 ### libnetty-resp
 
