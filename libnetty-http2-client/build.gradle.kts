@@ -3,37 +3,40 @@ plugins {
     id("libnetty.publish-conventions")
 }
 
+java {
+    registerFeature("nettyNativeSupport") {
+        usingSourceSet(sourceSets["main"])
+    }
+}
+
 dependencies {
 
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     implementation("org.slf4j:slf4j-api")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl")
-    implementation(project(":libnetty-fastcgi"))
-    implementation(project(":libnetty-http"))
-    implementation(project(":libnetty-http-client"))
-    implementation(project(":libnetty-http-server"))
-    implementation(project(":libnetty-resp"))
-    implementation(project(":libnetty-resp3"))
-    implementation(project(":libnetty-transport"))
-    implementation("io.netty:netty-example")
-    implementation(group = "io.netty", name = "netty-transport-native-epoll", classifier = "linux-x86_64")
-    implementation(group = "io.netty", name = "netty-transport-native-kqueue", classifier = "osx-x86_64")
-    implementation(group = "io.netty", name = "netty-tcnative-boringssl-static", classifier = "linux-aarch_64")
-    implementation(group = "io.netty", name = "netty-tcnative-boringssl-static", classifier = "linux-x86_64")
-    implementation(group = "io.netty", name = "netty-tcnative-boringssl-static", classifier = "osx-x86_64")
-    implementation(group = "io.netty", name = "netty-tcnative-boringssl-static", classifier = "windows-x86_64")
-    implementation("com.fasterxml.jackson.core:jackson-databind")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+
+    api(project(":libnetty-handler"))
+    api(project(":libnetty-http"))
+    api("io.netty:netty-handler-proxy")
+    api("io.netty:netty-codec-http2")
+    api(project(":libnetty-transport"))
+    api("com.github.fmjsjx:libcommon-util")
+    "nettyNativeSupportImplementation"(group = "io.netty", name = "netty-transport-native-epoll", classifier = "linux-x86_64")
+    "nettyNativeSupportImplementation"(group = "io.netty", name = "netty-transport-native-kqueue", classifier = "osx-x86_64")
+    "nettyNativeSupportImplementation"(group = "io.netty", name = "netty-tcnative-boringssl-static", classifier = "linux-aarch_64")
+    "nettyNativeSupportImplementation"(group = "io.netty", name = "netty-tcnative-boringssl-static", classifier = "linux-x86_64")
+    "nettyNativeSupportImplementation"(group = "io.netty", name = "netty-tcnative-boringssl-static", classifier = "osx-x86_64")
+    "nettyNativeSupportImplementation"(group = "io.netty", name = "netty-tcnative-boringssl-static", classifier = "windows-x86_64")
+    implementation("com.jcraft:jzlib")
+    implementation("org.brotli:dec")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testImplementation("org.mockito:mockito-core")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testImplementation("org.apache.logging.log4j:log4j-slf4j-impl")
 
 }
 
-description = "libnetty/Example"
+description = "libnetty/HTTP2-Client"
 
 tasks.test {
     // Use junit platform for unit tests.
@@ -53,7 +56,7 @@ publishing {
                 }
             }
             pom {
-                name.set("libnetty/Example")
+                name.set("libnetty/HTTP2-Client")
                 description.set("A set of some useful libraries based on netty4.1.x.")
                 url.set("https://github.com/fmjsjx/libnetty")
                 licenses {
