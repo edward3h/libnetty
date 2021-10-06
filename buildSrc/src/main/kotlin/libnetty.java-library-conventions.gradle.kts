@@ -3,15 +3,12 @@ plugins {
 }
 
 repositories {
-    maven {
-        url = uri("https://mirrors.cloud.tencent.com/nexus/repository/maven-public/")
-    }
     mavenCentral()
 }
 
 dependencies {
     // netty-bom
-    api(platform("io.netty:netty-bom:4.1.67.Final"))
+    api(platform("io.netty:netty-bom:4.1.68.Final"))
     // libcommon-bom
     api(platform("com.github.fmjsjx:libcommon-bom:2.4.3"))
     // junit-bom
