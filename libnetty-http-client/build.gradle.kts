@@ -14,7 +14,7 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     implementation("org.slf4j:slf4j-api")
-
+api(platform("com.github.fmjsjx:libcommon-bom:2.4.3"))
     api(project(":libnetty-handler"))
     api(project(":libnetty-http"))
     api("io.netty:netty-handler-proxy")
